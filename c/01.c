@@ -53,8 +53,10 @@ int main()
       {
         for (int j = 0; j < 9; j++)
         {
-          // not working, checking this later
-          if (strncmp(num_names[j], &buf[i], strlen(num_names[j]) == 0))
+          char tmp[50] = {0};
+          strncpy(tmp, &buf[i], strlen(num_names[j]));
+          // printf("%s == %s\n", tmp, num_names[j]);
+          if (strcmp(tmp, num_names[j]) == 0)
           {
             nums[i] = j + 1;
             break;
@@ -73,12 +75,13 @@ int main()
     }
     char digits[3];
     sprintf(digits, "%d%d", first, last);
-    // printf("%s\n", digits);
+    printf("%s\n", digits);
     int num = atoi(digits);
     day1b += num;
   }
 
   printf("Day 01: %d\n", day1a);
+  // wrong, but why?
   printf("Day 02: %d\n", day1b);
 
 done:
