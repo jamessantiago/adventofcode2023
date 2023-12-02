@@ -5,7 +5,7 @@
 int main()
 {
   FILE *f = NULL;
-  char buf[50];
+  char buf[75];
   int day1a = 0;
   int day1b = 0;
 
@@ -13,9 +13,9 @@ int main()
   if (f == NULL)
     goto done;
 
-  while (fgets(buf, 50, f) != NULL)
+  while (fgets(buf, 75, f) != NULL)
   {
-    int nums[50] = {0};
+    int nums[75] = {0};
     for (int i = 0; i < strlen(buf); i++)
     {
       char c[2] = {0};
@@ -40,9 +40,9 @@ int main()
 
   char *num_names[9] = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
   fseek(f, 0, SEEK_SET);
-  while (fgets(buf, 50, f) != NULL)
+  while (fgets(buf, 75, f) != NULL)
   {
-    int nums[50] = {0};
+    int nums[75] = {0};
     for (int i = 0; i < strlen(buf); i++)
     {
       char c[2] = {0};
@@ -53,7 +53,7 @@ int main()
       {
         for (int j = 0; j < 9; j++)
         {
-          char tmp[50] = {0};
+          char tmp[75] = {0};
           strncpy(tmp, &buf[i], strlen(num_names[j]));
           // printf("%s == %s\n", tmp, num_names[j]);
           if (strcmp(tmp, num_names[j]) == 0)
@@ -75,14 +75,13 @@ int main()
     }
     char digits[3];
     sprintf(digits, "%d%d", first, last);
-    printf("%s\n", digits);
+    // printf("%s\n", digits);
     int num = atoi(digits);
     day1b += num;
   }
 
-  printf("Day 01: %d\n", day1a);
-  // wrong, but why?
-  printf("Day 02: %d\n", day1b);
+  printf("Day 01-A: %d\n", day1a);
+  printf("Day 01-B: %d\n", day1b);
 
 done:
   if (f)
