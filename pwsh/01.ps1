@@ -1,0 +1,3 @@
+$a = cat .\01.txt
+"day1 part1: " + ($a | % { $_ -replace "\D", "" } | % { [int]($_[0] + $_[$_.Length - 1]) } | measure -sum).sum
+"day1 part2: " + ($a | % { $_ -replace "(one)|(two)|(three)|(four)|(five)|(six)|(seven)|(eight)|(nine)", { ($_.groups | ? { $v = $_.value; $_.Name -ne "0" -and $_.success -and $_.value -eq $v }).name } } | % { $_ -replace "\D", "" } | % { [int]($_[0] + $_[$_.Length / 2]) } | measure -sum).sum
